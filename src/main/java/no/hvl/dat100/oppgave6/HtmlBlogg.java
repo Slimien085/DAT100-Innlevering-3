@@ -13,12 +13,17 @@ public class HtmlBlogg extends Blogg {
 	private static String HTMLPREFIX = 
 			"<html>\n\t<head>\n\t\t<title>DAT100 Blogg</title>\n\t</head>\n\t<body>\n";
 	
-	private static String HTMLPOSTFIX = 
+	private static String HTMLSUFIX = 
 			"\t</body>\n</html>";
 	
 	@Override
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
-		
+		Innlegg[] samling = getSamling();
+		String output = HTMLPREFIX;
+		for(int i = 0; i < getAntall(); i++){
+			output += samling[i].toHTML() + "<hr>"; 
+		}
+		output += HTMLSUFIX;
+		return output;
 	}
 }
